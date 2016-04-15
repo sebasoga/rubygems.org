@@ -44,5 +44,5 @@ Rails.application.configure do
 
   config.active_support.test_order = :random
 
-  config.cache_store = :dalli_store, 'localhost:11211'
+  config.cache_store = :dalli_store
 end
