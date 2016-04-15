@@ -293,6 +293,12 @@ class PusherTest < ActiveSupport::TestCase
       should "set success code" do
         assert_equal 200, @cutter.code
       end
+
+      should "have memcached setup" do
+        Rails.cache.write("deps/v1/test-memcached", "omg!")
+        puts Rails.cache.fetch("deps/v1/test-memcached").inspect
+        refute_nil Rails.cache.fetch("deps/v1/test-memcached")
+      end
     end
   end
 end
