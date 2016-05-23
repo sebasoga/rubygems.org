@@ -139,4 +139,11 @@ FactoryGirl.define do
     version_id 0
     count 0
   end
+
+  factory :owners_request do
+    rubygem
+    description "Adopt me!"
+    contact_email { generate(:email) }
+    closed false
+  end
 end

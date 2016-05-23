@@ -11,6 +11,7 @@ class Rubygem < ActiveRecord::Base
   has_many :web_hooks, dependent: :destroy
   has_one :linkset, dependent: :destroy
   has_one :gem_download, -> { where(version_id: 0) }
+  has_one :owners_request, dependent: :destroy
 
   validate :ensure_name_format, if: :needs_name_validation?
   validates :name,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517061033) do
+ActiveRecord::Schema.define(version: 20160523211642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,17 @@ ActiveRecord::Schema.define(version: 20160517061033) do
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
+  create_table "owners_requests", force: :cascade do |t|
+    t.integer  "rubygem_id",                    null: false
+    t.text     "description"
+    t.string   "contact_email",                 null: false
+    t.boolean  "closed",        default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "owners_requests", ["rubygem_id"], name: "index_owners_requests_on_rubygem_id", using: :btree
 
   create_table "ownerships", force: :cascade do |t|
     t.integer  "rubygem_id"
